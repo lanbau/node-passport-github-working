@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Github authentication</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
+  <style>a { color:black;}</style>
+</head>
+<body>
+  <h1>Github LOGIN USING PASSPORT</h1>
+  <div>
+      <% if(user != undefined){%>
+        <h2> Below is the data sent by Github</h2>
+        <%= user.displayName %>
+        <img src="<%= user._json.avatar_url %>" />
+        <% var userData = user._json %>
+        <!-- loop through user object -->
+        <% Object.keys(userData).forEach(function(prop) { %>
+          <p><%- prop %> : <%- userData[prop] %></p>
+        <% }); %>
+        <a href="/logout">Logout</a>
+      <% } else {%>
+        <a href="/auth/github"><i class="fa fa-github fa-5x" aria-hidden="true"></i></a>
+      <% }%>
+  </div>
+</body>
+</html>
